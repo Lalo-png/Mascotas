@@ -16,14 +16,23 @@ import com.cesba.mascotas.models.AreaConAforo;
 import java.util.List;
 
 public class AreasAdapter extends RecyclerView.Adapter<AreasAdapter.AreaViewHolder> {
-    private final List<AreaConAforo> listaAreas;
+
+    private List<AreaConAforo> listaAreas;
 
     public AreasAdapter(List<AreaConAforo> listaAreas) {
         this.listaAreas = listaAreas;
     }
 
+    public void actualizarLista(List<AreaConAforo> nuevasAreas) {
+        this.listaAreas = nuevasAreas; // Cambia 'listaAreas' si tu variable de lista se llama distinto
+        notifyDataSetChanged();
+    }
+
     @NonNull
     @Override
+
+
+
     public AreaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_area, parent, false);
         return new AreaViewHolder(v);
@@ -50,10 +59,14 @@ public class AreasAdapter extends RecyclerView.Adapter<AreasAdapter.AreaViewHold
         }
     }
 
+
+
     @Override
     public int getItemCount() {
         return listaAreas.size();
     }
+
+
 
     static class AreaViewHolder extends RecyclerView.ViewHolder {
         TextView tvNombre, tvHorario, tvReglas, tvAforo;
@@ -68,4 +81,5 @@ public class AreasAdapter extends RecyclerView.Adapter<AreasAdapter.AreaViewHold
             pbAforo = itemView.findViewById(R.id.pbAforoArea);
         }
     }
+
 }
